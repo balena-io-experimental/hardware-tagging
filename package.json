@@ -3,9 +3,16 @@
   "version": "0.0.1",
   "description": "tag devices with relevant hardware characteristics",
   "main": "index.js",
+  "engines": {
+    "node": ">=0.12"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --project . && copyfiles -e 'src/**/*.ts' 'src/**/*' \"$(jq -r .compilerOptions.outDir <tsconfig.json)\""
+    "start": "node ./build/index.js",
+    "test": "npm run clean && npm run build && npm run start",
+    "lint": "resin-lint --typescript --fix src/ test/ && tsc --noEmit",
+    "prettify": "balena-lint -e ts -e js --typescript --fix src/ test/ typings/",
+    "clean": "rm -rf build",
+    "build": "tsc --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -18,9 +25,16 @@
   },
   "homepage": "https://github.com/balena-io-playground/hardware-tagging#readme",
   "devDependencies": {
+    "@balena/lint": "^5.0.2",
     "copyfiles": "^2.2.0",
+    "lint-staged": "^10.1.4",
     "prettier": "^2.0.4",
+    "resin-lint": "^3.3.1",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "balena-sdk": "^12.30.0",
+    "lodash": "^4.17.15"
   }
 }
