@@ -12,6 +12,7 @@ There are some required `docker-compose.yml` settings:
 ```
 labels:
       io.balena.features.sysfs: '1'
+      io.balena.features.procfs: '1'
       io.balena.features.balena-api: '1'
 ```
 
