@@ -1,0 +1,26 @@
+{
+  "name": "hardware-tagging",
+  "version": "0.0.1",
+  "description": "tag devices with relevant hardware characteristics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --project . && copyfiles -e 'src/**/*.ts' 'src/**/*' \"$(jq -r .compilerOptions.outDir <tsconfig.json)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balena-io-playground/hardware-tagging.git"
+  },
+  "author": "Matthew McGinn <mamcgi@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/balena-io-playground/hardware-tagging/issues"
+  },
+  "homepage": "https://github.com/balena-io-playground/hardware-tagging#readme",
+  "devDependencies": {
+    "copyfiles": "^2.2.0",
+    "prettier": "^2.0.4",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  }
+}
