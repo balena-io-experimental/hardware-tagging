@@ -23,10 +23,10 @@ labels:
 * Physical memory in MB
 * CPU information
 * Kernel release
+* RTC
 
 ### Planned future data:
 
-* RTC
 * CPU serial
 
 Example:

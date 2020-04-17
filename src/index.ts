@@ -19,6 +19,15 @@ const getMacAddresses = () => {
 	);
 };
 
+const hasRTC = () => {
+	try {
+		fs.lstatSync("/dev/rtc");
+		return true;
+	} catch {
+		return false;
+	}
+};
+
 const getCpu = () => {
 	return os.cpus()[0].model;
 };
@@ -50,11 +59,12 @@ const setTag = async (key: string, val: string) => {
 
 const getHardwareTags = async () => {
 	const tags = [
-		["CPU", getCpu()],
-		["TOTAL_MEM_MB", `${os.totalmem() / 1024.0 ** 2}`],
-		["KERNEL_RELEASE", os.release()],
+		...getDiskSize(),
 		...getMacAddresses(),
-		...getDiskSize()
+		["CPU", getCpu()],
+		["HAS_RTC", `${hasRTC()}`],
+		["KERNEL_RELEASE", os.release()],
+		["TOTAL_MEM_MB", `${os.totalmem() / 1024.0 ** 2}`]
 	];
 	_.forEach(tags, async item => {
 		await setTag(item[0], item[1]);
