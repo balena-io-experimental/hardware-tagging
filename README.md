@@ -29,6 +29,8 @@ labels:
 ### Planned future data:
 
 * CPU serial
+* Fin sleep state
+* Fin UID
 
 Example:
 
