@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "balena-sdk": "^12.30.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   }
 }
